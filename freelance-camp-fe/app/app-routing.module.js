@@ -7,35 +7,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var app_component_1 = require("./app.component");
+var router_1 = require("@angular/router");
 var homepage_component_1 = require("./homepage/homepage.component");
 var documents_component_1 = require("./documents/documents.component");
 var proposal_list_component_1 = require("./proposal/proposal-list.component");
 var proposal_new_component_1 = require("./proposal/proposal-new.component");
-var app_routing_module_1 = require("./app-routing.module");
-var AppModule = (function () {
-    function AppModule() {
+var routes = [
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'home', component: homepage_component_1.HomepageComponent },
+    { path: 'documents', component: documents_component_1.DocumentsComponent },
+    { path: 'proposals', component: proposal_list_component_1.ProposalListComponent },
+    { path: 'proposals/new', component: proposal_new_component_1.ProposalNewComponent },
+];
+var AppRoutingModule = (function () {
+    function AppRoutingModule() {
     }
-    AppModule = __decorate([
+    AppRoutingModule = __decorate([
         core_1.NgModule({
-            imports: [
-                platform_browser_1.BrowserModule,
-                app_routing_module_1.AppRoutingModule
-            ],
-            declarations: [
-                app_component_1.AppComponent,
-                homepage_component_1.HomepageComponent,
-                documents_component_1.DocumentsComponent,
-                proposal_list_component_1.ProposalListComponent,
-                proposal_new_component_1.ProposalNewComponent
-            ],
-            bootstrap: [
-                app_component_1.AppComponent
-            ]
+            imports: [router_1.RouterModule.forRoot(routes)],
+            exports: [router_1.RouterModule]
         })
-    ], AppModule);
-    return AppModule;
+    ], AppRoutingModule);
+    return AppRoutingModule;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.AppRoutingModule = AppRoutingModule;
+//# sourceMappingURL=app-routing.module.js.map
